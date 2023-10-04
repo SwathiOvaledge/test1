@@ -1,0 +1,21 @@
+{
+    "job":{
+		"secret_region_name": "us-east-1",
+        "docdb_table":"charge_code",
+        "query":"select CHARGE_CODE as \"_id\",CHARGE_CODE_DETAIL_ID as \"chargeCodeDetailId\",CHARGE_CODE as \"chargeCode\",LINKED_CHARGE_CODE_VALUE as \"linkedChargeCodeValue\",to_char(CHARGECODE_SOFT_START_DATE, 'YYYY-MM-DDThh24:mi:ssTZH:TZM') as \"chargeCodeSoftStartDate\",to_char( CHARGECODE_SOFT_END_DATE, 'YYYY-MM-DDThh24:mi:ssTZH:TZM') as \"chargeCodeSoftEndDate\",to_char( CHARGECODE_HARD_CLOSE_DATE, 'YYYY-MM-DDThh24:mi:ssTZH:TZM') as \"chargeCodeHardCloseDate\",ACTIVE_INACTIVE_FLAG as \"activeInactiveFlag\",ALLOW_CHARGES_FLAG as \"allowChargesFlag\",CHARGECODE_TYPE as \"chargeCodeType\",PROJECT_ACTIVITY_CODE as \"projectActivityCode\",PROJECT_ACTIVITY_NAME as \"projectActivityName\",PROJECT_TYPE_FLAG as \"projectTypeFlag\",to_char( CREATE_DATE, 'YYYY-MM-DDThh24:mi:ssTZH:TZM') as \"createDate\",to_char( UPDATE_DATE, 'YYYY-MM-DDThh24:mi:ssTZH:TZM') as \"updateDate\",ENGAGEMENT_ID as \"engagementId\",PROJECT_GOC_OFFICE as \"projectGocOffice\",PROJECT_DEPARTMENT_CODE as \"projectDepartmentCode\" FROM DATAHUB.VW_CHARGE_CODE_DETAIL"
+    },
+    "environment":{
+        "dev":{
+            "snowflake_db_secret_name":"cdp-edw-sf-mirror-lambda-dev",
+            "docdb_secret_name":"cdp-edw-docdb-mirror-lambda-dev"
+        },
+        "qa":{
+            "snowflake_db_secret_name":"cdp-edw-sf-mirror-lambda-qa",
+            "docdb_secret_name":"cdp-edw-docdb-mirror-lambda-qa"
+        },
+        "prod":{
+            "snowflake_db_secret_name":"cdp-edw-sf-mirror-lambda-prod",
+            "docdb_secret_name":"cdp-edw-docdb-mirror-lambda-prod"
+        }
+    }
+}
